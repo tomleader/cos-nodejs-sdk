@@ -121,7 +121,7 @@ function upload(filePath, bucket, dstpath, bizattr, insertOnly, callback) {
 					form.field('biz_attr', bizattr.toString());
 				}
 				if(insertOnly!==undefined){
-					form.field('insertOnly', insertOnly);
+					form.field('insertOnly', insertOnly+'');
 				}
 
 				var headers = form.headers();
@@ -282,7 +282,7 @@ function upload_prepare(filePath, bucket, dstpath, bizattr, slice_size, session,
 					form.field('session', session.toString());
 				}
 				if (insertOnly>=0) {
-					form.field('insertOnly', insertOnly);
+					form.field('insertOnly', insertOnly+'');
 				}
 
 
@@ -320,7 +320,7 @@ function upload_data(bucket, dstpath, filePath, offset, length, session, insertO
 		.field('session', session.toString())
 		.field('offset', offset.toString());
 	if(insertOnly>=0){
-		form.field('insertOnly',insertOnly);
+		form.field('insertOnly',insertOnly+'');
 	}
 	var fstream = fs.createReadStream(filePath, {start:offset, end:offset+length-1});
 	form.stream('filecontent', fstream, filePath, length);
